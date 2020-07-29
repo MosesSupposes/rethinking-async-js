@@ -1,14 +1,3 @@
-const allFiles = {
-	file1: undefined,
-	file2: undefined,
-	file3: undefined,
-};
-
-// request all files at once in "parallel"
-getFile("file1");
-getFile("file2");
-getFile("file3");
-
 function fakeAjax(url, cb) {
 	var fake_responses = {
 		file1: "The first text",
@@ -34,37 +23,10 @@ function output(text) {
 function getFile(file) {
 	fakeAjax(file, function (text) {
 		// what do we do here?
-		switch (file) {
-			case "file1":
-				allFiles[file] = text;
-				output(text);
-				break;
-
-			case "file2":
-				(function output2ndFile() {
-					if (allFiles["file1"]) {
-						allFiles[file] = text;
-						output(text);
-					} else {
-						setTimeout(output2ndFile, 0);
-					}
-				})();
-				break;
-
-			case "file3":
-				(function output3rdFile() {
-					if (allFiles["file1"] && allFiles["file2"]) {
-						allFiles[file] = text;
-						output(text);
-						outpu("Complete!");
-					} else {
-						setTimeout(output3rdFile, 1000);
-					}
-				})();
-				break;
-
-			default:
-				return;
-		}
 	});
 }
+
+// request all files at once in "parallel"
+getFile("file1");
+getFile("file2");
+getFile("file3");
