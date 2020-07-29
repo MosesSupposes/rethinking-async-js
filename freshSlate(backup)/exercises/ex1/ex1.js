@@ -56,6 +56,7 @@ function getFile(file) {
 					if (allFiles["file1"] && allFiles["file2"]) {
 						allFiles[file] = text;
 						output(text);
+						outpu("Complete!");
 					} else {
 						setTimeout(output3rdFile, 1000);
 					}
