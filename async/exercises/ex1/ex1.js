@@ -1,14 +1,3 @@
-const allFiles = {
-	file1: undefined,
-	file2: undefined,
-	file3: undefined,
-};
-
-// request all files at once in "parallel"
-getFile("file1");
-getFile("file2");
-getFile("file3");
-
 function fakeAjax(url, cb) {
 	var fake_responses = {
 		file1: "The first text",
@@ -68,3 +57,14 @@ function getFile(file) {
 		}
 	});
 }
+
+const allFiles = {
+	file1: undefined,
+	file2: undefined,
+	file3: undefined,
+};
+
+// request all files at once in "parallel"
+getFile("file1");
+getFile("file2");
+getFile("file3");
