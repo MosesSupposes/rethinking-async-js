@@ -36,4 +36,5 @@ function getFile(file) {
 	.map(getFile)
 	.reduce(function combine(chain, promise) {
 		return chain.then(() => promise).then(output);
-	}, Promise.resolve());
+	}, Promise.resolve())
+	.then(() => output("Complete!"));
