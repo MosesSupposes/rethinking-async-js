@@ -19,13 +19,6 @@ function output(text) {
 
 // **************************************
 
-function makeThunk(fn, ...args) {
-	const val = fn(...args);
-	return function (cb) {
-		return cb(val);
-	};
-}
-
 function getFile(file) {
 	let text, fn;
 	fakeAjax(file, response => {
