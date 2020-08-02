@@ -34,3 +34,17 @@ async function outputAllFileContents() {
 	output("Complete!");
 }
 outputAllFileContents();
+
+// An alternative way of writing the definition above
+async function outputAllFileContentsAlternative() {
+	const [f1, f2, f3] = await Promise.all([
+		getFile("file1"),
+		getFile("file2"),
+		getFile("file3"),
+	]);
+
+	output(f1);
+	output(f2);
+	output(f3);
+	output("Complete!");
+}
