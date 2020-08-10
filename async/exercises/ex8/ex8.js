@@ -1,10 +1,26 @@
-$(document).ready(function(){
+$(document).ready(function () {
 	var $btn = $("#btn"),
-		$list = $("#list");
+		$list = $("#list"),
+		clicks = ASQ.react.of(),
+		msgs = ASQ.react.of(),
+		latest;
 
-	$btn.click(function(evt){
-		// TODO
+	$btn.on("click", function (evt) {
+		clicks.push(evt);
 	});
 
-	// TODO: setup sampled sequence, populate $list
+	setInterval(() => {
+		if (latest) {
+			msgs.push("clicked!");
+			latest = null;
+		}
+	}, 1000);
+
+	clicks.val(evt => {
+		latest = evt;
+	});
+
+	msgs.val(msg => {
+		$list.append($("<div>" + msg + "</div>"));
+	});
 });
